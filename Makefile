@@ -11,6 +11,7 @@ SRC = src/main.cpp \
       src/Graphics/PSFFont.cpp \
 	  src/Input/Event.cpp \
 	  src/UI/List.cpp \
+	  src/Directory.cpp \
 
 OBJS = $(SRC:.cpp=.o)
 PROJECT = gloader

@@ -17,7 +17,7 @@ namespace UI {
 
         void render(size_t x, size_t y);
 
-        void set_position(size_t pos);
+        void set_position(int pos);
         size_t get_position() const;
 
         void set_select_color(size_t color);

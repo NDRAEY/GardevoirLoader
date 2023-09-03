@@ -10,10 +10,14 @@ UI::List::List(const std::vector<ListAction>& named_actions)
     // ...
 }
 
-void UI::List::set_position(size_t pos) {
-    if(pos < actions.size()) {
+void UI::List::set_position(int pos) {
+	if(pos < 0) {
+		position = actions.size() + pos;
+	} else if (pos < actions.size()) {
         position = pos;
-    }
+    } else {
+		position = 0;
+	}
 }
 
 size_t UI::List::get_position() const {
@@ -50,7 +54,7 @@ void UI::List::render(size_t x, size_t y) {
             Graphics::DrawFillRect(
                 __system_framebuffer,
                 x,
-                sy,
+                sy - 1,
                 __system_framebuffer.screen.info.width,
                 __system_font.get_glyph_height() + 4,
                 text_color
