@@ -19,7 +19,16 @@ Video::Screen __system_screen("/dev/graphics/fb0");
 Video::BackFramebuffer __system_framebuffer(__system_screen);
 Graphics::PSFFont __system_font("/UniCyr8x8.psf");
 
+void do_mount_routines() {
+	// ...
+	// Find system partition by name and mount it to /system
+	// Find userdata partition by name and mount it to /data
+	// Then hardlink folder /data/media/0/ to /sdcard (ln -s ... /sdcard)
+}
+
 int main() {
+	do_mount_routines();
+
 	try {
 		Directory dir(FIRMWARE_FOLDER);
 
