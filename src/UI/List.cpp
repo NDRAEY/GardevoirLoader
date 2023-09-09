@@ -5,7 +5,7 @@
 extern Video::BackFramebuffer __system_framebuffer;
 extern Graphics::PSFFont __system_font;
 
-UI::List::List(const std::vector<ListAction>& named_actions) 
+UI::List::List(const std::vector<ListAction*>& named_actions)
 : actions(named_actions) {
     // ...
 }
@@ -44,7 +44,7 @@ void UI::List::render(size_t x, size_t y) {
     size_t sy = y;
     
     for(int i = 0; i < actions.size(); i++) {
-        const ListAction& elem = actions[i];
+        const ListAction* elem = actions[i];
         
         size_t text_color_now;
 
@@ -65,7 +65,7 @@ void UI::List::render(size_t x, size_t y) {
 
         __system_font.draw_string(
             __system_framebuffer,
-            std::string(elem.name),  // How to optimize?
+			elem->name,
             x + 10,
             sy,
             text_color_now

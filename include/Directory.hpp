@@ -17,9 +17,9 @@ public:
 	~Directory();
 
 	std::vector<std::string> list_file_names();
-
+	std::string get_path();
 private:
 
-	const std::string& path;
+	const std::string path;
 	DIR* directory = nullptr;
 };

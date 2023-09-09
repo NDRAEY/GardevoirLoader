@@ -55,16 +55,32 @@ void Graphics::PSFFont::draw_glyph(Video::BackFramebuffer& framebuffer, uint16_t
 }
 
 void Graphics::PSFFont::draw_string(Video::BackFramebuffer& framebuffer,
-                                    const std::string& string,
-                                    size_t x, size_t y, size_t color) {
-    size_t sx = x;
-    size_t sy = y;
-    
-    for(char i : string) {
-        draw_glyph(framebuffer, i, sx, sy, color);
+									const std::string& string,
+									size_t x, size_t y, size_t color) {
+	size_t sx = x;
+	size_t sy = y;
 
-        sx += glyph_width;
-    }
+	for(char i : string) {
+		draw_glyph(framebuffer, i, sx, sy, color);
+
+		sx += glyph_width;
+	}
+}
+
+void Graphics::PSFFont::draw_string(Video::BackFramebuffer& framebuffer,
+									const char* string,
+									size_t x, size_t y, size_t color) {
+	size_t sx = x;
+	size_t sy = y;
+
+	do {
+		if(!*string)
+			break;
+
+		draw_glyph(framebuffer, *string, sx, sy, color);
+
+		sx += glyph_width;
+	} while(*string++);
 }
 
 Graphics::PSFFont::~PSFFont() {

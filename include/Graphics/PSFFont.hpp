@@ -35,6 +35,7 @@ namespace Graphics {
 
         void draw_glyph(Video::BackFramebuffer& framebuffer, uint16_t glyph, size_t x, size_t y, size_t color);
         void draw_string(Video::BackFramebuffer& framebuffer, const std::string& string, size_t x, size_t y, size_t color);
+		void draw_string(Video::BackFramebuffer& framebuffer, const char* string, size_t x, size_t y, size_t color);
 
         size_t get_glyph_width() const { return glyph_width; }
         size_t get_glyph_height() const { return glyph_height; }

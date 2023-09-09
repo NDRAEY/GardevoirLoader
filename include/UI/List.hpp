@@ -8,11 +8,11 @@ namespace UI {
         public:
 
         typedef struct {
-            const char* name;
-            void (*action)();
+            const std::string name;
+            void (*action)(const std::string& name);
         } ListAction;
 
-        List(const std::vector<ListAction>& named_actions);
+        List(const std::vector<ListAction*>& named_actions);
         ~List();
 
         void render(size_t x, size_t y);
@@ -28,7 +28,7 @@ namespace UI {
 
         private:
 
-        const std::vector<ListAction>& actions;
+        const std::vector<ListAction*>& actions;
         size_t position = 0;
         size_t select_color = 0x00FF00;
         size_t text_color = 0xFF00FF;
